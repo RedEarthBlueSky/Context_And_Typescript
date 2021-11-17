@@ -1,14 +1,18 @@
+//  use the TodosContextState type to create a provider components that stores the state
+//  that we want to make available to other components using context
 import React, { createContext, useState, FC } from 'react'
 import { TodosContextState, ChildrenType } from '../types'
 
+//  set default values for the context
 const contextDefaultValues: TodosContextState = {
   todos: [],
+  //  this will make typescript happy before they are set when we use the provider
   addTodo: () => {}
 }
 
 export const TodosContext = createContext<TodosContextState>(contextDefaultValues)
 
-const TodosContextProvider: FC<any> = ({children}: ChildrenType) => {
+const TodosProvider: FC<any> = ({children}: ChildrenType) => {
   const [todos, setTodos] = useState<string[]>(contextDefaultValues.todos)
 
   const addTodo = (newTodo: string) => setTodos((todos) => [...todos, newTodo])
@@ -25,5 +29,5 @@ const TodosContextProvider: FC<any> = ({children}: ChildrenType) => {
   )
 }
 
-export default TodosContextProvider
+export default TodosProvider
 
