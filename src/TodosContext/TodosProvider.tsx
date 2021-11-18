@@ -7,7 +7,8 @@ import { TodosContextState, ChildrenType } from '../types'
 const contextDefaultValues: TodosContextState = {
   todos: [],
   //  this will make typescript happy before they are set when we use the provider
-  addTodo: () => {}
+  addTodo: () => {},
+  resetTodo: () => {},
 }
 
 export const TodosContext = createContext<TodosContextState>(contextDefaultValues)
@@ -16,12 +17,14 @@ const TodosProvider: FC<any> = ({children}: ChildrenType) => {
   const [todos, setTodos] = useState<string[]>(contextDefaultValues.todos)
 
   const addTodo = (newTodo: string) => setTodos((todos) => [...todos, newTodo])
+  const resetTodo = () => setTodos(() => contextDefaultValues.todos)
   
   return (
     <TodosContext.Provider 
       value={{
         todos,
-        addTodo
+        addTodo,
+        resetTodo,
       }}
     >
       {children}
