@@ -1,6 +1,6 @@
 import React, { useContext, FC, useState } from 'react'
 import { TextInput, Button, View, Text, StyleSheet } from 'react-native'
-import TodosProvider, { TodosContext } from '../TodosContext/TodosProvider'
+import TodosProvider, { TodosContext } from '../Contexts/Todos.context'
 
 const Todos: FC<any> = () => {
   const {todos, addTodo, resetTodo} = useContext(TodosContext)
@@ -38,6 +38,7 @@ const Todos: FC<any> = () => {
   )
 }
 
+//  still not sure how this works lol
 export default () => (
   <TodosProvider>
     <Todos />
