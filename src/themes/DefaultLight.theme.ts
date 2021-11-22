@@ -1,6 +1,6 @@
 //  DefaultLight.theme.ts
 
-import { ColorTheme, SpacingTheme, Theme } from "../types/theme.interface"
+import { ColorTheme, SpacingTheme, Theme } from "../types/Theme.interface"
 
 //  Define our light theme colors
 const DEFAULT_LIGHT_COLOR_THEME: ColorTheme = {
