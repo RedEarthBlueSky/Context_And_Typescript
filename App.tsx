@@ -14,8 +14,8 @@ const App = React.memo(() => {
   return (
     <ThemeProvider initial={DEFAULT_LIGHT_THEME}>
       <View style={styles.container}>
-        <Toolbar title='I am the Tool Bar'/>
-        <Text>Open up App.tsx to start working on your app!</Text>
+        <Toolbar title='Wednesday Title'/>
+        <Text>This text is from App.tsx</Text>
         <Todos />
         <StatusBar style="auto" />
       </View>
