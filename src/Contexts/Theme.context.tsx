@@ -27,9 +27,9 @@ interface ContextProvidedValue {
 //  the consumber components when there is no rendered context provider in the view
 //  hierarchy, so basically it will provide a fallback object
 const ThemeContext = React.createContext<ContextProvidedValue> ({
-  theme: DEFAULT_LIGHT_THEME,
+  theme: DEFAULT_DARK_THEME,
   toggleTheme: () => {
-    console.log('ThemeProvider is not rendere!')
+    console.log('ThemeProvider is not rendered!')
   }
 })
 

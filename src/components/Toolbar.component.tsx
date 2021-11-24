@@ -1,13 +1,10 @@
-//  reconfigure to consume the provided theme
+//  reconfigure to consume the custom hoook
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-import { Theme } from '../types/Theme.interface';
-import { useTheme } from '../Contexts/Theme.context';
+import { Theme } from '../types/Theme.interface'
+import { useThemeAwareObject } from '../hooks/ThemeAwareObject.hook'
 
-//  Create a function to generate our style sheet
-//  based on the recieved theme
-//  Note that we're working with theme interface values
 const createStyles = (theme: Theme) => {
   const styles = StyleSheet.create({
     container: {
@@ -33,16 +30,9 @@ export interface ToolbarProps {
 }
 
 export const Toolbar = React.memo<ToolbarProps>((props) => {
-  //  consume the provided value of our theme context
-  const { theme } = useTheme()
+  //  Calling our custom hook
+  const Styles = useThemeAwareObject(createStyles)
 
-  //  Generate our style sheet based on the current theme
-  //  Using React.useMemo hook for optimisation,
-  //  the Styles object will be re-generated if the theme changes
-  const Styles = React.useMemo(
-    () => createStyles(theme),
-    [theme]
-  )
 
   return (
     <View style={Styles.container}>
