@@ -1,3 +1,5 @@
+
+//  Card.styles.ts
 import { StyleSheet } from 'react-native'
 
 import { Theme } from '../../../types/Theme.interface'
