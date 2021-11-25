@@ -20,6 +20,7 @@ import { Theme } from '../types/Theme.interface'
 //  Our context provider will provide this object shape
 interface ContextProvidedValue {
   theme: Theme
+  setTheme: (theme: Theme) => void
   toggleTheme: () => void
 }
 
