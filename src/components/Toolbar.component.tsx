@@ -1,46 +1,41 @@
 //  reconfigure to consume the custom hoook
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Platform, StatusBar, StyleSheet, Text, View } from 'react-native'
 
-import { Theme } from '../types/Theme.interface'
+import { Theme, ToolbarProps } from '../types/Theme.interface'
 import { useThemeAwareObject } from '../hooks/ThemeAwareObject.hook'
+import { toolbarStyles } from './todoscomponents/styles/Toolbar.styles'
 
-const createStyles = (theme: Theme) => {
-  const styles = StyleSheet.create({
-    container: {
-      alignItems:'center',
-      backgroundColor: theme.color.primary,
-      flexDirection: 'row',
-      height: 48,
-      paddingHorizontal: theme.spacing.base,
-      width: '100%',
-      marginBottom: 20,
-    },
-    text: {
-      color: theme.color.onPrimary,
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-  })
-  return styles
-}
-
-export interface ToolbarProps {
-  title: string;
-}
+const createStyleVariables = (theme: Theme) => {
+  const styleVariables = {
+    statusBarColor: theme.color.primaryDark,
+  };
+  return styleVariables;
+};
 
 export const Toolbar = React.memo<ToolbarProps>((props) => {
-  //  Calling our custom hook
-  const Styles = useThemeAwareObject(createStyles)
+  const Styles = useThemeAwareObject(toolbarStyles);
+  const StyleVariables = useThemeAwareObject(createStyleVariables);
 
+  const IosStatusBarElementOrNull = React.useMemo(() => {
+    if (Platform.OS !== 'ios') {
+      return null;
+    }
+
+    return <View style={Styles.iosStatusBar} />;
+  }, [Styles]);
 
   return (
-    <View style={Styles.container}>
-      <Text style={Styles.text}>
-        {props.title}
-      </Text>
+    <View>
+      {IosStatusBarElementOrNull}
+      <View style={Styles.container}>
+        <StatusBar backgroundColor={StyleVariables.statusBarColor} barStyle={'light-content'} />
+        <Text style={Styles.text}>{props.title}</Text>
+      </View>
     </View>
-  )
-})
+  );
+});
+
+
 
 

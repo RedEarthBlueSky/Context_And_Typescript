@@ -5,6 +5,7 @@
 export interface ColorTheme {
   primary: string,
   onPrimary: string,
+  primaryDark: string,
   surface: string,
   onSurface: string,
   background: string,
@@ -19,5 +20,9 @@ export interface Theme {
   id: string,
   color: ColorTheme,
   spacing: SpacingTheme,
+}
+
+export interface ToolbarProps {
+  title: string;
 }
 

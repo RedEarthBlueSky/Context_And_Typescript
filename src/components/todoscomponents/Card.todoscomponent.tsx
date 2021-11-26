@@ -5,13 +5,12 @@ import { DEFAULT_DARK_THEME, DEFAULT_LIGHT_THEME } from '../../themes'
 import { Theme } from '../../types/Theme.interface'
 import { useThemeAwareObject } from '../../hooks/ThemeAwareObject.hook'
 import { useTheme } from '../../Contexts/Theme.context'
-import { cardStyles } from './styles/CardStyles'
-// import { RenderCounter } from './RenderCounter.todoscomponents
+import { cardStyles } from './styles/Card.styles'
 
 export const Card = React.memo(() =>{
   const { theme, setTheme, toggleTheme } = useTheme()
   const Styles = useThemeAwareObject(cardStyles)
-  console.log(useTheme())
+
   //  have a seperate helper file?
   const InfoTextBoldStyles = React.useMemo<StyleProp<TextStyle>>(() => {
     const infoTextBoldStyles: StyleProp<TextStyle> = [Styles.infoText, Styles.infoTextBold]
@@ -49,7 +48,6 @@ export const Card = React.memo(() =>{
         <Text style={Styles.infoText}>{'The current theme is: '}</Text>
         <Text style={InfoTextBoldStyles}>{theme.id}</Text>
       </View>
-      <RenderCounter />
       <View style={Styles.buttonsWrapper}>
         {ToggleButtonElement}
         {SetLightThemeButtonElement}

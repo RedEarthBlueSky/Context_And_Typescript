@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 
 import { Theme } from '../../../types/Theme.interface'
 
-export const renderComponentStyles = (theme: Theme) => {
+export const counterStyles = (theme: Theme) => {
   const styles = StyleSheet.create({
     root: {
       flexDirection: 'row',

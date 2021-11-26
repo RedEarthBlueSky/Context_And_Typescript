@@ -6,6 +6,7 @@ import { ColorTheme, SpacingTheme, Theme } from "../types/Theme.interface"
 const DEFAULT_DARK_COLOR_THEME: ColorTheme = {
   primary: '#03a9f4',
   onPrimary: '#fff',
+  primaryDark: '#0288d1',
   surface: '#545454',
   onSurface: '#fff',
   background: '#3f3f3f',
